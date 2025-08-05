@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/689156f67f808f192df0bdf2/1j1rrncp9';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+<head>
+  <meta charset="UTF-8">
+  <title>BloxDice</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: sans-serif;
+      background: #f2f2f2;
+      padding-top: 60px;
+    }
+
+    #wheel {
+      width: 250px;
+      height: 250px;
+      margin: 0 auto;
+      border: 8px solid #222;
+      border-radius: 50%;
+      background: conic-gradient(#28a745 0% 50%, #dc3545 50% 100%);
+      transition: transform 2s ease-out;
+    }
+
+    #pointer {
+      width: 0;
+      height: 0;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-bottom: 28px solid #000;
+      margin: 20px auto;
+    }
+
+    button {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 17px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 22px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="pointer"></div>
+  <div id="wheel"></div>
+  <br>
+  <button onclick="spin()">Spin</button>
+  <div id="result"></div>
+
+  <script>
+    let spinning = false;
+
+    function spin() {
+      if (spinning) return;
+      spinning = true;
+      const wheel = document.getElementById("wheel");
+      const result = document.getElementById("result");
+      result.textContent = '';
+      const angle = Math.floor(Math.random() * 360);
+      const spins = 5 * 360;
+      const final = spins + angle;
+      wheel.style.transform = `rotate(${final}deg)`;
+      setTimeout(() => {
+        const res = angle < 180 ? 'You win! Please use the support on the main page and take an screenshot of this message and tell us you won.' : 'You lost.';
+        alert(res);
+        result.textContent = res;
+        spinning = false;
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>
